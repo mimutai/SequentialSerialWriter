@@ -12,17 +12,51 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MahApps.Metro.Controls;
 
 namespace SequentialSerialWriter
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : MetroWindow
     {
         public MainWindow()
         {
             InitializeComponent();
+
+            SetPortListComboBox(new List<string>() { "COM1", "COM5" });
+            SetBoudRateComboBox(new List<string>() { "9600", "115200" });
+        }
+
+        public void SetPortListComboBox(List<String> items)
+        {
+            PortListComboBox.ItemsSource = items;
+        }
+
+        public void SetBoudRateComboBox(List<String> items)
+        {
+            BaudRateComboBox.ItemsSource = items;
+        }
+
+        private void PortListComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string? selectedPortName = PortListComboBox.SelectedValue.ToString();
+            if (selectedPortName != null)
+            {
+                SerialPortManager.SetPortName((string)selectedPortName);
+            }
+        }
+
+        private void BaudRateComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string? selectedBaudRate = BaudRateComboBox.SelectedValue.ToString();
+            if(selectedBaudRate != null)
+            {
+                int baudRate = 0;
+                bool validString = int.TryParse(selectedBaudRate, out baudRate);
+                if (validString) SerialPortManager.SetBaudRate(baudRate);
+            }
         }
     }
 }

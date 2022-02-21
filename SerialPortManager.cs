@@ -11,6 +11,9 @@ namespace SequentialSerialWriter
     public static class SerialPortManager
     {
         private static SerialPort serialPort;
+        public delegate void SerialDataReceivedCallback(string data);
+        private static SerialDataReceivedCallback? serialDataReceivedCallback = null;
+        public static void SetSerialDataReceivedCallback(SerialDataReceivedCallback callback) => serialDataReceivedCallback = callback; //コールバックを設定
 
         static SerialPortManager()
         {
@@ -47,6 +50,10 @@ namespace SequentialSerialWriter
             try
             {
                 string readMessage = serialPort.ReadLine();
+                if(serialDataReceivedCallback != null)
+                {
+                    serialDataReceivedCallback(readMessage);
+                }
             }
             catch
             {

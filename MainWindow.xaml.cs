@@ -27,6 +27,8 @@ namespace SequentialSerialWriter
 
             SetPortListComboBox(new List<string>() { "COM1", "COM5" });
             SetBoudRateComboBox(new List<string>() { "9600", "115200" });
+
+            SerialPortManager.SetSerialDataReceivedCallback(AddSerialReceivedData);
         }
 
         public void SetPortListComboBox(List<String> items)
@@ -51,12 +53,23 @@ namespace SequentialSerialWriter
         private void BaudRateComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             string? selectedBaudRate = BaudRateComboBox.SelectedValue.ToString();
-            if(selectedBaudRate != null)
+            if (selectedBaudRate != null)
             {
                 int baudRate = 0;
                 bool validString = int.TryParse(selectedBaudRate, out baudRate);
                 if (validString) SerialPortManager.SetBaudRate(baudRate);
             }
+        }
+
+        public void AddSerialReceivedData(string text)
+        {
+            ReceivedData_TextBlock.Dispatcher.Invoke(new Action(() => {
+                if (!text.EndsWith("\n")) text += "\n"; //改行コードがなければ付与する
+
+                string timestamp_str = DateTime.Now.ToString(" HH:mm:ss.fff-> "); //タイムスタンプ
+                ReceivedData_TextBlock.Text += timestamp_str + text; //新しく加える
+            
+            }));
         }
     }
 }

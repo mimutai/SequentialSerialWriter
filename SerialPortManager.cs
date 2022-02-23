@@ -42,6 +42,11 @@ namespace SequentialSerialWriter
             Debug.Print(serialPort.BaudRate.ToString());
         }
 
+        public static string[] GetPortNames()
+        {
+            return SerialPort.GetPortNames();
+        }
+
         private static void SerialDataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             if (serialPort == null) return;

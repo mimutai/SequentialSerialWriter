@@ -20,7 +20,7 @@
         <StackPanel Grid.Row="0" Orientation="Horizontal"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,15,0,15">
             <TextBlock Text="PORT" VerticalAlignment="Center"/>
             <ComboBox HorizontalAlignment="Left" Width="160" Margin="5,0,0,0" x:Name="PortListComboBox" SelectionChanged="PortListComboBox_SelectionChanged" />
-            <Button Content="Open" HorizontalAlignment="Left" Width="80" Margin="10,0,20,0" FontSize="12"/>
+            <Button x:Name="OpenClose_Button" Content="Open" HorizontalAlignment="Left" Width="80" Margin="10,0,20,0" FontSize="12" Click="OpenClose_Button_Click"/>
             <TextBlock Text="BAUD RATE" VerticalAlignment="Center"/>
             <ComboBox x:Name="BaudRateComboBox" HorizontalAlignment="Left" Width="150" Margin="5,0,0,0" SelectionChanged="BaudRateComboBox_SelectionChanged"/>
         </StackPanel>

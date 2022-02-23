@@ -47,6 +47,12 @@ namespace SequentialSerialWriter
             return SerialPort.GetPortNames();
         }
 
+        public static bool IsOpen() => serialPort.IsOpen;
+
+        public static void Open() => serialPort.Open();
+        
+        public static void Close() => serialPort.Close();
+
         private static void SerialDataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             if (serialPort == null) return;

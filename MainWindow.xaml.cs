@@ -89,5 +89,22 @@ namespace SequentialSerialWriter
 
             }));
         }
+
+        // シリアルポートの開閉を行う
+        private void OpenClose_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (!SerialPortManager.IsOpen())
+            {
+                SerialPortManager.Open();
+                PortListComboBox.IsEnabled = false;
+                OpenClose_Button.Content = "Close";
+            }
+            else
+            {
+                SerialPortManager.Close();
+                PortListComboBox.IsEnabled = true;
+                OpenClose_Button.Content = "Open";
+            }
+        }
     }
 }

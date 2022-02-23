@@ -49,8 +49,8 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="100"/>
                     </Grid.ColumnDefinitions>
-                    <TextBox Grid.Column="0" VerticalAlignment="Stretch"/>
-                    <Button Grid.Column="1" Content="SEND" VerticalAlignment="Stretch" Margin="10,0,0,0" FontSize="12"/>
+                    <TextBox x:Name="SendString_TextBox" Grid.Column="0" VerticalAlignment="Stretch"/>
+                    <Button x:Name="Send_Button" Grid.Column="1" Content="SEND" VerticalAlignment="Stretch" Margin="10,0,0,0" FontSize="12" Click="Send_Button_Click"/>
                 </Grid>
 
                 <!-- Log Viewer-->

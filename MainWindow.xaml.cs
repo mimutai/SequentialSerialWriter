@@ -106,5 +106,16 @@ namespace SequentialSerialWriter
                 OpenClose_Button.Content = "Open";
             }
         }
+
+        /// <summary>
+        /// 文字列を送信する
+        /// </summary>
+        private void Send_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (!SerialPortManager.IsOpen()) return;
+
+            SerialPortManager.Send(SendString_TextBox.Text);
+            SendString_TextBox.Text = String.Empty;
+        }
     }
 }

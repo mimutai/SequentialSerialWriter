@@ -53,6 +53,14 @@ namespace SequentialSerialWriter
         
         public static void Close() => serialPort.Close();
 
+        public static void Send(string send_str)
+        {
+            if (IsOpen())
+            {
+                serialPort.Write(send_str);
+            }
+        }
+
         private static void SerialDataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             if (serialPort == null) return;

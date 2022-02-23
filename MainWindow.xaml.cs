@@ -117,5 +117,13 @@ namespace SequentialSerialWriter
             SerialPortManager.Send(SendString_TextBox.Text);
             SendString_TextBox.Text = String.Empty;
         }
+
+        /// <summary>
+        /// 受信した文字列をクリアする
+        /// </summary>
+        private void ClearOutput_Button_Click(object sender, RoutedEventArgs e)
+        {
+            ReceivedData_TextBlock.Text = String.Empty;
+        }
     }
 }

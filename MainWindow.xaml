@@ -61,7 +61,7 @@
                 </Border>
 
                 <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Stretch" HorizontalAlignment="Right">
-                    <Button Content="Clear output" Width="100" FontSize="12"/>
+                    <Button x:Name="ClearOutput_Button" Content="Clear output" Width="100" FontSize="12" Click="ClearOutput_Button_Click"/>
                 </StackPanel>
             </Grid>
             <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" />

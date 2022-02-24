@@ -34,7 +34,11 @@ namespace SequentialSerialWriter
             {
                 SetPortListComboBox(SerialPortManager.GetPortNames().ToList());
             };
+
+
             SetBoudRateComboBox(new List<string>() { "9600", "115200" });
+            BaudRateComboBox.SelectedIndex = portList.Count - 1; //初期値を設定
+            SerialPortManager.SetBaudRate(115200);
 
 
             SerialPortManager.SetSerialDataReceivedCallback(AddSerialReceivedData);

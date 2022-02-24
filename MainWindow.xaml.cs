@@ -86,10 +86,7 @@ namespace SequentialSerialWriter
         {
             ReceivedData_TextBlock.Dispatcher.Invoke(new Action(() =>
             {
-                if (!text.EndsWith("\n")) text += "\n"; //改行コードがなければ付与する
-
-                string timestamp_str = DateTime.Now.ToString(" HH:mm:ss.fff-> "); //タイムスタンプ
-                ReceivedData_TextBlock.Text += timestamp_str + text; //新しく加える
+                ReceivedData_TextBlock.Text += text; //新しく加える
                 ReceivedData_ScrollViewer.ScrollToBottom(); //自動で最下部にスクロールする
             }));
         }

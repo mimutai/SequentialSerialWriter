@@ -68,7 +68,7 @@ namespace SequentialSerialWriter
 
             try
             {
-                string readMessage = serialPort.ReadLine();
+                string readMessage = serialPort.ReadExisting();
                 if(serialDataReceivedCallback != null)
                 {
                     serialDataReceivedCallback(readMessage);

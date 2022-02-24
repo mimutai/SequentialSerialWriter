@@ -56,7 +56,7 @@
                 <!-- Log Viewer-->
                 <Border Grid.Row="1" BorderBrush="#FFAFAFAF" BorderThickness="2" Margin="0,10,0,10">
                     <ScrollViewer x:Name="ReceivedData_ScrollViewer" ScrollViewer.VerticalScrollBarVisibility="Auto">
-                        <TextBlock x:Name="ReceivedData_TextBlock" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                        <TextBlock x:Name="ReceivedData_TextBlock" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" TextWrapping="Wrap"/>
                     </ScrollViewer>
                 </Border>
 

@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MahApps.Metro.Controls;
 using System.Diagnostics;
+using System.Collections.ObjectModel;
 
 namespace SequentialSerialWriter
 {
@@ -40,8 +41,13 @@ namespace SequentialSerialWriter
             BaudRateComboBox.SelectedIndex = portList.Count - 1; //初期値を設定
             SerialPortManager.SetBaudRate(115200);
 
-
             SerialPortManager.SetSerialDataReceivedCallback(AddSerialReceivedData);
+
+            SendTextList.Add(new SendTextListBoxItem());
+            SendTextList.Add(new SendTextListBoxItem());
+            SendTextList.Add(new SendTextListBoxItem());
+            Debug.WriteLine(SendTextList.Count);
+            SendTextListBox.ItemsSource = SendTextList;
         }
 
         public void SetPortListComboBox(List<String> items)
@@ -126,5 +132,8 @@ namespace SequentialSerialWriter
         {
             ReceivedData_TextBlock.Text = String.Empty;
         }
+
+
+        private ObservableCollection<SendTextListBoxItem> SendTextList = new ObservableCollection<SendTextListBoxItem>();
     }
 }

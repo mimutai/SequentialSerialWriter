@@ -23,8 +23,11 @@ namespace SequentialSerialWriter
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
+        internal static MainWindow Instance;
         public MainWindow()
         {
+            Instance = this;
+
             InitializeComponent();
 
             List<string> portList = SerialPortManager.GetPortNames().ToList(); //ポート一覧を取得する
@@ -157,5 +160,15 @@ namespace SequentialSerialWriter
                 SendTextListController.RemoveLastItem();
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void SendAll_Button_Click(object sender, RoutedEventArgs e)
+        {
+            SendTextListController.SendAll();
+        }
+
+        internal void SendAll_Button_IsEnabled(bool isEnable) => SendAll_Button.IsEnabled = isEnable;
     }
 }

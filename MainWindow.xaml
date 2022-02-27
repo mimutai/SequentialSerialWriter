@@ -82,7 +82,7 @@
                         <ColumnDefinition Width="120"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Button x:Name="SendAll_Button" Grid.Column="0" Content="SEND_ALL" VerticalAlignment="Stretch" FontSize="12" Click="Send_Button_Click"/>
+                    <Button x:Name="SendAll_Button" Grid.Column="0" Content="SEND_ALL" VerticalAlignment="Top" FontSize="12" Click="SendAll_Button_Click" Height="30"/>
                 </Grid>
 
                 <!--ListBox -->

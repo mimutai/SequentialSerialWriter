@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 using System.Collections.ObjectModel;
 
 namespace SequentialSerialWriter
 {
     internal class SendTextListController
     {
+        private static readonly int SEND_WAIT_TIME = 1100; //次の送信までの時間[ms]
+
         /// <summary>
         /// 送信テキストリスト（ListBoxにバインド）
         /// </summary>
@@ -32,6 +35,18 @@ namespace SequentialSerialWriter
 
         internal static int Count() => SendTextList.Count;
 
+        internal static async void SendAll()
+        {
+            MainWindow.Instance.SendAll_Button_IsEnabled(false);
+
+            for (int idx = 0; idx < SendTextList.Count(); idx++)
+            {
+                await Task.Delay(SEND_WAIT_TIME);
+                Debug.Print($"{idx+1}/{SendTextList.Count()}");
+            }
+
+            MainWindow.Instance.SendAll_Button_IsEnabled(true);
+        }
     }
 
     internal class SendTextListBoxItem

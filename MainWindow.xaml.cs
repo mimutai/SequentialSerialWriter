@@ -23,12 +23,11 @@ namespace SequentialSerialWriter
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
-        internal static MainWindow Instance;
+        internal static MainWindow? Instance;
         public MainWindow()
         {
-            Instance = this;
-
             InitializeComponent();
+            Instance = this;
 
             List<string> portList = SerialPortManager.GetPortNames().ToList(); //ポート一覧を取得する
             SetPortListComboBox(portList); //ポート一覧をComboBoxに設定する

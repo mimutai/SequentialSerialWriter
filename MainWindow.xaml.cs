@@ -154,7 +154,17 @@ namespace SequentialSerialWriter
         /// <param name="e"></param>
         private void ListBoxItem_Remove_Click(object sender, RoutedEventArgs e)
         {
-            SendTextList.Remove((SendTextListBoxItem)SendTextListBox.SelectedItem);
+            SendTextListBoxItem selectedItem = (SendTextListBoxItem)SendTextListBox.SelectedItem;
+            if (selectedItem != null)
+            {
+                //選択されている要素を削除する
+                SendTextList.Remove(selectedItem);
+            }
+            else if (SendTextList.Count > 0)
+            {
+                // 何も選択されていないときには末尾の要素を削除する
+                SendTextList.RemoveAt(SendTextList.Count - 1);
+            }
         }
     }
 }

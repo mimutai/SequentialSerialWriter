@@ -45,7 +45,6 @@ namespace SequentialSerialWriter
 
             SendTextList.Add(new SendTextListBoxItem());
             SendTextList.Add(new SendTextListBoxItem());
-            SendTextList.Add(new SendTextListBoxItem());
             Debug.WriteLine(SendTextList.Count);
             SendTextListBox.ItemsSource = SendTextList;
         }
@@ -133,7 +132,29 @@ namespace SequentialSerialWriter
             ReceivedData_TextBlock.Text = String.Empty;
         }
 
-
+        /// <summary>
+        /// 送信テキストリスト（ListBoxにバインド）
+        /// </summary>
         private ObservableCollection<SendTextListBoxItem> SendTextList = new ObservableCollection<SendTextListBoxItem>();
+
+        /// <summary>
+        /// 送信テキストリストに追加
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ListBoxItem_Add_Click(object sender, RoutedEventArgs e)
+        {
+            SendTextList.Add(new SendTextListBoxItem());
+        }
+
+        /// <summary>
+        /// 送信テキストリストから削除
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ListBoxItem_Remove_Click(object sender, RoutedEventArgs e)
+        {
+            SendTextList.Remove((SendTextListBoxItem)SendTextListBox.SelectedItem);
+        }
     }
 }

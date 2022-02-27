@@ -90,7 +90,7 @@
                     <ListBox x:Name="SendTextListBox">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <Grid Margin="5">
+                                <Grid Margin="0 10">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="10"/>
                                         <ColumnDefinition Width="*"/>
@@ -120,8 +120,8 @@
                         <ColumnDefinition Width="40"/>
                     </Grid.ColumnDefinitions>
 
-                    <Button x:Name="ListBoxItem_Add" Grid.Column="1" Content="ADD" VerticalAlignment="Stretch" FontSize="12" FontWeight="Bold" Margin="2,0"/>
-                    <Button x:Name="ListBoxItem_Remove" Grid.Column="2" Content="REMOVE" VerticalAlignment="Stretch" FontSize="12" FontWeight="Bold" Margin="2,0"/>
+                    <Button x:Name="ListBoxItem_Add" Grid.Column="1" Content="ADD" VerticalAlignment="Top" FontSize="12" FontWeight="Bold" Margin="2,0,2,0" Height="30" Click="ListBoxItem_Add_Click"/>
+                    <Button x:Name="ListBoxItem_Remove" Grid.Column="2" Content="REMOVE" VerticalAlignment="Stretch" FontSize="12" FontWeight="Bold" Margin="2,0" Click="ListBoxItem_Remove_Click"/>
 
                     <Button x:Name="ListBoxItem_Up" Grid.Column="4" Content="↑" VerticalAlignment="Stretch" FontSize="12" FontWeight="Bold"  Margin="2,0"/>
                     <Button x:Name="ListBoxItem_Down" Grid.Column="5" Content="↓" VerticalAlignment="Stretch" FontSize="12" FontWeight="Bold" Margin="2,0"/>

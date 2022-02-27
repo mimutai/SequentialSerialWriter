@@ -43,10 +43,10 @@ namespace SequentialSerialWriter
 
             SerialPortManager.SetSerialDataReceivedCallback(AddSerialReceivedData);
 
-            SendTextList.Add(new SendTextListBoxItem());
-            SendTextList.Add(new SendTextListBoxItem());
-            Debug.WriteLine(SendTextList.Count);
-            SendTextListBox.ItemsSource = SendTextList;
+            SendTextListController.SendTextList.Add(new SendTextListBoxItem());
+            SendTextListController.SendTextList.Add(new SendTextListBoxItem());
+            Debug.WriteLine(SendTextListController.SendTextList.Count);
+            SendTextListBox.ItemsSource = SendTextListController.SendTextList;
         }
 
         public void SetPortListComboBox(List<String> items)
@@ -133,37 +133,28 @@ namespace SequentialSerialWriter
         }
 
         /// <summary>
-        /// 送信テキストリスト（ListBoxにバインド）
-        /// </summary>
-        private ObservableCollection<SendTextListBoxItem> SendTextList = new ObservableCollection<SendTextListBoxItem>();
-
-        /// <summary>
         /// 送信テキストリストに追加
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void ListBoxItem_Add_Click(object sender, RoutedEventArgs e)
         {
-            SendTextList.Add(new SendTextListBoxItem());
+            SendTextListController.AddItem();
         }
 
         /// <summary>
         /// 送信テキストリストから削除
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void ListBoxItem_Remove_Click(object sender, RoutedEventArgs e)
         {
             SendTextListBoxItem selectedItem = (SendTextListBoxItem)SendTextListBox.SelectedItem;
             if (selectedItem != null)
             {
                 //選択されている要素を削除する
-                SendTextList.Remove(selectedItem);
+                SendTextListController.RemoveItem(selectedItem);
             }
-            else if (SendTextList.Count > 0)
+            else if (SendTextListController.Count() > 0)
             {
                 // 何も選択されていないときには末尾の要素を削除する
-                SendTextList.RemoveAt(SendTextList.Count - 1);
+                SendTextListController.RemoveLastItem();
             }
         }
     }

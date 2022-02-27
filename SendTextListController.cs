@@ -37,15 +37,18 @@ namespace SequentialSerialWriter
 
         internal static async void SendAll()
         {
-            MainWindow.Instance.SendAll_Button_IsEnabled(false);
+            MainWindow.Instance.SendAll_Button_IsEnabled(false); // SendAllボタンを無効化する
 
             for (int idx = 0; idx < SendTextList.Count(); idx++)
             {
-                await Task.Delay(SEND_WAIT_TIME);
-                Debug.Print($"{idx+1}/{SendTextList.Count()}");
+                MainWindow.Instance.SendProgress_TextBlock_SetText($"Sending: {idx + 1}/{SendTextList.Count()}"); // 送信状況をUIに表示する
+                SerialPortManager.Send(SendTextList[idx].SendText); // シリアルポートで送信する
+
+                await Task.Delay(SEND_WAIT_TIME); //送信遅延
             }
 
-            MainWindow.Instance.SendAll_Button_IsEnabled(true);
+            MainWindow.Instance.SendAll_Button_IsEnabled(true); // SendAllボタンを有効化する
+            MainWindow.Instance.SendProgress_TextBlock_SetText(string.Empty); // 送信状況のUIを非表示にする
         }
     }
 

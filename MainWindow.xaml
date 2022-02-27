@@ -81,8 +81,10 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="120"/>
                         <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="150"/>
                     </Grid.ColumnDefinitions>
                     <Button x:Name="SendAll_Button" Grid.Column="0" Content="SEND_ALL" VerticalAlignment="Top" FontSize="12" Click="SendAll_Button_Click" Height="30"/>
+                    <TextBlock x:Name="SendProgress_TextBlock" Grid.Column="3" Text="Sending: 1/5" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Right"/>
                 </Grid>
 
                 <!--ListBox -->

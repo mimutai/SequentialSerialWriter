@@ -50,6 +50,8 @@ namespace SequentialSerialWriter
             SendTextListController.SendTextList.Add(new SendTextListBoxItem());
             Debug.WriteLine(SendTextListController.SendTextList.Count);
             SendTextListBox.ItemsSource = SendTextListController.SendTextList;
+
+            SendProgress_TextBlock_SetText(string.Empty);
         }
 
         public void SetPortListComboBox(List<String> items)
@@ -170,5 +172,7 @@ namespace SequentialSerialWriter
         }
 
         internal void SendAll_Button_IsEnabled(bool isEnable) => SendAll_Button.IsEnabled = isEnable;
+
+        internal void SendProgress_TextBlock_SetText(string text) => SendProgress_TextBlock.Text = text;
     }
 }

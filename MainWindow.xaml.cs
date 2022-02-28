@@ -45,12 +45,26 @@ namespace SequentialSerialWriter
 
             SerialPortManager.SetSerialDataReceivedCallback(AddSerialReceivedData);
 
-            SendTextListController.SendTextList.Add(new SendTextListBoxItem());
-            SendTextListController.SendTextList.Add(new SendTextListBoxItem());
+            // ファイルからデータを読み込む
+            SaveDataManager.Load();
+            SendTextListController.SetList(SaveDataManager.SaveData.SendTextList);
+
             Debug.WriteLine(SendTextListController.SendTextList.Count);
             SendTextListBox.ItemsSource = SendTextListController.SendTextList;
 
             SendProgress_TextBlock_SetText(string.Empty);
+        }
+
+        /// <summary>
+        /// アプリケーション終了時のイベント
+        /// </summary>
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+
+            //データを保存する
+            SaveDataManager.SaveData.SendTextList = SendTextListController.SendTextList.Select(x => x.SendText).ToList();
+            SaveDataManager.Save();
         }
 
         public void SetPortListComboBox(List<String> items)

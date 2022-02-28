@@ -19,7 +19,22 @@ namespace SequentialSerialWriter
 
         internal static void AddItem()
         {
-            SendTextList.Add(new SendTextListBoxItem());
+            SendTextList.Add(new SendTextListBoxItem(String.Empty));
+        }
+
+        internal static void AddItem(string text)
+        {
+            SendTextList.Add(new SendTextListBoxItem(text));
+        }
+
+        internal static void SetList(List<String> list)
+        {
+            SendTextList.Clear(); //リストを初期化する
+
+            foreach (string str in list)
+            {
+                AddItem(str);
+            }
         }
 
         /// <summary>
@@ -62,9 +77,9 @@ namespace SequentialSerialWriter
             set { _sendText = value; }
         }
 
-        public SendTextListBoxItem()
+        public SendTextListBoxItem(string text)
         {
-            _sendText = String.Empty;
+            _sendText = text;
         }
     }
 }

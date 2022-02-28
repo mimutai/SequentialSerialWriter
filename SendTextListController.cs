@@ -52,6 +52,8 @@ namespace SequentialSerialWriter
 
         internal static async void SendAll()
         {
+            if (!SerialPortManager.IsOpen()) return; // ポートが開いていなかったら送信しない
+
             MainWindow.Instance.SendAll_Button_IsEnabled(false); // SendAllボタンを無効化する
 
             for (int idx = 0; idx < SendTextList.Count(); idx++)

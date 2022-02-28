@@ -48,7 +48,7 @@ namespace SequentialSerialWriter
     [XmlRoot("savedata")]
     public class SaveDataXml
     {
-        [XmlArrayItem("sendtextlist")]
+        [XmlArray("sendtextlist")]
         public List<string> SendTextList = new List<string>();
     }
 }

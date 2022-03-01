@@ -50,6 +50,41 @@ namespace SequentialSerialWriter
 
         internal static int Count() => SendTextList.Count;
 
+        /// <summary>
+        /// リスト内の任意の要素を、その前後の要素と交換する
+        /// </summary>
+        /// <param name="item">入れ替える要素</param>
+        /// <param name="back">指定した要素を前の(インデックスの小さい)要素と入れ替える（falseで後ろと入れ替え）</param>
+        internal static void SwapBackAndForth(SendTextListBoxItem item, bool forward)
+        {
+            if (item == null) return; //処理しない
+
+            int item_idx = SendTextList.IndexOf(item); //入れ替え対象のオブジェクトのインデックス
+
+            if (forward)
+            {
+                //前と入れ替える
+                if (item_idx > 0) //交換可能
+                {
+                    // 入れ替える
+                    SendTextListBoxItem tmp = SendTextList[item_idx];
+                    SendTextList[item_idx] = SendTextList[item_idx - 1];
+                    SendTextList[item_idx - 1] = tmp;
+                }
+            }
+            else
+            {
+                //後ろと入れ替える
+                if (item_idx < SendTextList.Count - 2) //交換可能
+                {
+                    // 入れ替える
+                    SendTextListBoxItem tmp = SendTextList[item_idx];
+                    SendTextList[item_idx] = SendTextList[item_idx + 1];
+                    SendTextList[item_idx + 1] = tmp;
+                }
+            }
+        }
+
         internal static async void SendAll()
         {
             if (!SerialPortManager.IsOpen()) return; // ポートが開いていなかったら送信しない

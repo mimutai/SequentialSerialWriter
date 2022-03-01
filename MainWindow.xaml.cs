@@ -200,5 +200,17 @@ namespace SequentialSerialWriter
         }
 
         internal void SendProgress_TextBlock_SetText(string text) => SendProgress_TextBlock.Text = text;
+
+        private void ListBoxItem_Up_Click(object sender, RoutedEventArgs e)
+        {
+            SendTextListBoxItem selectedItem = (SendTextListBoxItem)SendTextListBox.SelectedItem;
+            SendTextListController.SwapBackAndForth(selectedItem, true);
+        }
+
+        private void ListBoxItem_Down_Click(object sender, RoutedEventArgs e)
+        {
+            SendTextListBoxItem selectedItem = (SendTextListBoxItem)SendTextListBox.SelectedItem;
+            SendTextListController.SwapBackAndForth(selectedItem, false);
+        }
     }
 }

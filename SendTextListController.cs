@@ -75,7 +75,7 @@ namespace SequentialSerialWriter
             else
             {
                 //後ろと入れ替える
-                if (item_idx < SendTextList.Count - 2) //交換可能
+                if (item_idx < SendTextList.Count - 1) //交換可能
                 {
                     // 入れ替える
                     SendTextListBoxItem tmp = SendTextList[item_idx];

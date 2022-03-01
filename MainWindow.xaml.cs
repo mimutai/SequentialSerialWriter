@@ -204,13 +204,22 @@ namespace SequentialSerialWriter
         private void ListBoxItem_Up_Click(object sender, RoutedEventArgs e)
         {
             SendTextListBoxItem selectedItem = (SendTextListBoxItem)SendTextListBox.SelectedItem;
-            SendTextListController.SwapBackAndForth(selectedItem, true);
+            if (selectedItem != null)
+            {
+                SendTextListController.SwapBackAndForth(selectedItem, true);
+                SendTextListBox.SelectedItem = selectedItem;
+            }
+
         }
 
         private void ListBoxItem_Down_Click(object sender, RoutedEventArgs e)
         {
             SendTextListBoxItem selectedItem = (SendTextListBoxItem)SendTextListBox.SelectedItem;
-            SendTextListController.SwapBackAndForth(selectedItem, false);
+            if (selectedItem != null)
+            {
+                SendTextListController.SwapBackAndForth(selectedItem, false);
+                SendTextListBox.SelectedItem = selectedItem;
+            }
         }
     }
 }

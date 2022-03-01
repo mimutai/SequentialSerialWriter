@@ -54,7 +54,7 @@ namespace SequentialSerialWriter
         {
             if (!SerialPortManager.IsOpen()) return; // ポートが開いていなかったら送信しない
 
-            MainWindow.Instance.SendAll_Button_IsEnabled(false); // SendAllボタンを無効化する
+            MainWindow.Instance.SetEnableControlUI(false); // リスト制御UIを無効化する
 
             for (int idx = 0; idx < SendTextList.Count(); idx++)
             {
@@ -64,7 +64,7 @@ namespace SequentialSerialWriter
                 await Task.Delay(SEND_WAIT_TIME); //送信遅延
             }
 
-            MainWindow.Instance.SendAll_Button_IsEnabled(true); // SendAllボタンを有効化する
+            MainWindow.Instance.SetEnableControlUI(true); // リスト制御UIを有効化する
             MainWindow.Instance.SendProgress_TextBlock_SetText(string.Empty); // 送信状況のUIを非表示にする
         }
     }

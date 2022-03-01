@@ -186,6 +186,19 @@ namespace SequentialSerialWriter
 
         internal void SendAll_Button_IsEnabled(bool isEnable) => SendAll_Button.IsEnabled = isEnable;
 
+        /// <summary>
+        /// リストを制御するUIの有効無効を設定する
+        /// </summary>
+        /// <param name="enable"></param>
+        internal void SetEnableControlUI(bool enable)
+        {
+            SendAll_Button.IsEnabled = enable;
+            ListBoxItem_Add.IsEnabled = enable;
+            ListBoxItem_Remove.IsEnabled = enable;
+            ListBoxItem_Up.IsEnabled = enable;
+            ListBoxItem_Down.IsEnabled = enable;
+        }
+
         internal void SendProgress_TextBlock_SetText(string text) => SendProgress_TextBlock.Text = text;
     }
 }

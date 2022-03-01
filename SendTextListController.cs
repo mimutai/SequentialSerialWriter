@@ -54,7 +54,7 @@ namespace SequentialSerialWriter
         /// リスト内の任意の要素を、その前後の要素と交換する
         /// </summary>
         /// <param name="item">入れ替える要素</param>
-        /// <param name="back">指定した要素を前の(インデックスの小さい)要素と入れ替える（falseで後ろと入れ替え）</param>
+        /// <param name="forward">指定した要素を前の(インデックスの小さい)要素と入れ替える（falseで後ろと入れ替え）</param>
         internal static void SwapBackAndForth(SendTextListBoxItem item, bool forward)
         {
             if (item == null) return; //処理しない

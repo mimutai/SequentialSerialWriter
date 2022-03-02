@@ -42,7 +42,11 @@ namespace SequentialSerialWriter
             Debug.WriteLine(SAVEDATA_PATH);
 
             //ファイルが存在しなかった場合は作成する
-            if (!File.Exists(SAVEDATA_PATH)) File.Create(SAVEDATA_PATH);
+            if (!File.Exists(SAVEDATA_PATH))
+            {
+                FileStream fs = File.Create(SAVEDATA_PATH);
+                fs.Close();
+            }
 
             // シリアライズしてファイルに書き込む
             XmlSerializer serializer = new XmlSerializer(typeof(SaveDataXml));

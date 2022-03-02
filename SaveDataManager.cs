@@ -21,10 +21,18 @@ namespace SequentialSerialWriter
 
             XmlSerializer serializer = new XmlSerializer(typeof(SaveDataXml));
             StreamReader file = new StreamReader(SAVEDATA_PATH);
-            var data = serializer.Deserialize(file); //ファイルから読み込む
-            file.Close();
-
-            if (data != null) SaveData = (SaveDataXml)data; //Xmlの要素が存在したらキャストして保存
+            try
+            {
+                var data = serializer.Deserialize(file); //ファイルから読み込む
+                if (data != null) SaveData = (SaveDataXml)data; //Xmlの要素が存在したらキャストして保存
+            }
+            catch (Exception)
+            {
+            }
+            finally
+            {
+                if(file != null) file.Close();
+            }
 
             return SaveData;
         }

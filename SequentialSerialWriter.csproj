@@ -8,6 +8,8 @@
 		<PublishSingleFile>true</PublishSingleFile>
 		<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
 		<EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+		<Version>1.0.0</Version>
+		<Authors>mimutai</Authors>
 	</PropertyGroup>
 
 	<ItemGroup>
